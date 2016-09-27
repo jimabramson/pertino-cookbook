@@ -26,7 +26,7 @@ module PertinoCookbook
     # @example '27c0206e-15aa-46b0-842e-3f216f11d8a5'
     def perform_device_auth(api_key)
       execute '.pauth' do
-        command "/opt/pertino/pgateway/.pauth --apikey=#{api_key}"
+        command "/opt/pertino/pgateway/.pauth --device-auth-key=#{api_key}"
         not_if "grep -q #{api_key} /opt/pertino/pgateway/conf/client.conf"
         notifies :restart, 'service[pgateway]'
       end
@@ -84,5 +84,6 @@ module PertinoCookbook
         enabled true
       end
     end
+
   end
 end
