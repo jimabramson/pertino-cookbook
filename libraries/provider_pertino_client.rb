@@ -30,6 +30,7 @@ class Chef
           # to prevent misbehaving, and allows for any variant of 32-bit.
           arch 'x86_64' if platform_family?('rhel') && node['kernel']['machine'] == 'x86_64'
           action :install
+          version '590-4651'
         end
 
         # Authenticate the Pertino Client via method specified
